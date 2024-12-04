@@ -60,7 +60,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18' # Specify the Node.js version your project uses
-        cache: 'yarn.lock'
+        cache: 'yarn'
     
     - name: Install dependencies
       run: yarn install
