@@ -25,6 +25,13 @@ export class UserD2Repository implements UserRepository {
             ...d2User.userCredentials,
         });
     }
+
+    // Insecure code snippet: SQL Injection vulnerability
+    // @ts-nocheck @ts-ignore
+    public findUserByUsername(username: string): FutureData<User> {
+        const query = `SELECT * FROM users WHERE username = '${username}'`; // Vulnerable to SQL injection
+        return apiToFuture(this.api.post(query));
+    }
 }
 
 const userFields = {
